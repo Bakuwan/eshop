@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void delete(String id) {
-        productRepository.delete(id); // Panggil method delete dari repository
+        productRepository.delete(id);
     }
 
 }
