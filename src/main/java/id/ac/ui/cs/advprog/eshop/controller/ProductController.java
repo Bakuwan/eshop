@@ -43,15 +43,17 @@ public class ProductController {
         Product product = service.findById(id);
         if (product != null) {
             model.addAttribute("product", product);
-            return "editProduct"; // Halaman untuk edit produk
+            return "editProduct";
         }
-        return "redirect:/product/list"; // Jika produk tidak ditemukan, arahkan ke halaman daftar produk
+        return "redirect:/product/list";
     }
 
     @PostMapping("/edit/{id}")
     public String editProductPost(@ModelAttribute Product product) {
-        service.update(product); // Update produk
-        return "redirect:/product/list"; // Arahkan kembali ke halaman daftar produk setelah update
+        service.update(product);
+        return "redirect:/product/list";
     }
+
+
 
 }

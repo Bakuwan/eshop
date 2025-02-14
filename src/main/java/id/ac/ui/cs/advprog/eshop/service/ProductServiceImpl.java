@@ -31,12 +31,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(String id) {
-        return productRepository.findById(id); // Cari produk berdasarkan ID
+        return productRepository.findById(id);
     }
 
     @Override
     public Product update(Product product) {
-        return productRepository.update(product); // Update produk di repositori
+        return productRepository.update(product);
     }
 
 }

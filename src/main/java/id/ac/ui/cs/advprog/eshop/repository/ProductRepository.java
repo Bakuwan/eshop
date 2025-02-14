@@ -23,20 +23,20 @@ public class ProductRepository {
     public Product findById(String id) {
         for (Product product : productData) {
             if (product.getProductId().equals(id)) {
-                return product; // Mengembalikan produk berdasarkan ID
+                return product;
             }
         }
-        return null; // Jika produk tidak ditemukan
+        return null;
     }
 
     public Product update(Product product) {
         for (int i = 0; i < productData.size(); i++) {
             if (productData.get(i).getProductId().equals(product.getProductId())) {
-                productData.set(i, product); // Update produk yang ditemukan
+                productData.set(i, product);
                 return product;
             }
         }
-        return null; // Jika produk tidak ditemukan
+        return null;
     }
 
 }
