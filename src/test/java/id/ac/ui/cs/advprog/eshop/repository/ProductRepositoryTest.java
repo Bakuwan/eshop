@@ -19,7 +19,7 @@ class ProductRepositoryTest {
 
     @BeforeEach
     void setup() {
-        // Setup if needed
+        this.productRepository = new ProductRepository();
     }
 
     @Test
@@ -71,4 +71,51 @@ class ProductRepositoryTest {
 
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testUpdateProduct() {
+        Product product = new Product();
+        product.setProductId("eb5589f1c39-646e-8860-71a6fa63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+
+        productRepository.create(product);
+
+        product.setProductName("Sampo Cap Aja");
+        product.setProductQuantity(50);
+
+        Product updatedProduct = productRepository.update(product);
+
+        assertNotNull(updatedProduct);
+        assertEquals("Sampo Cap Aja", updatedProduct.getProductName());
+        assertEquals(50, updatedProduct.getProductQuantity());
+    }
+
+    @Test
+    void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductId("eb5589f1c39-646e-8860-71a6fa63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+
+        productRepository.create(product);
+
+        productRepository.delete(product.getProductId());
+
+        Product deletedProduct = productRepository.findById(product.getProductId());
+
+        assertNull(deletedProduct);
+    }
+
+    @Test
+    void testDeleteProductNotFound() {
+        // Attempting to delete a product that does not exist in the repository
+        productRepository.delete("non_existing_id");
+
+        // Verifying that the product with the non-existing ID is still not found
+        Product deletedProduct = productRepository.findById("non_existing_id");
+
+        assertNull(deletedProduct);
+    }
+
 }
