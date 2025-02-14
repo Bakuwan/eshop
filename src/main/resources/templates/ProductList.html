@@ -16,7 +16,7 @@
     <tr>
       <th scope="col">Product Name</th>
       <th scope="col">Quantity</th>
-      <th scope="col">Actions</th> <!-- Kolom untuk tombol Edit -->
+      <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -24,10 +24,8 @@
       <td th:text="${product.productName}"></td>
       <td th:text="${product.productQuantity}"></td>
       <td>
-        <!-- Tombol Edit -->
-        <a th:href="@{/product/edit/{productId}(productId=${product.productId})}" class="btn btn-warning btn-sm">
-          Edit
-        </a>
+        <a th:href="@{/product/edit/{productId}(productId=${product.productId})}" class="btn btn-warning btn-sm">Edit</a>
+        <a th:href="@{/product/delete/{productId}(productId=${product.productId})}" class="btn btn-danger btn-sm">Delete</a>
       </td>
     </tr>
     </tbody>

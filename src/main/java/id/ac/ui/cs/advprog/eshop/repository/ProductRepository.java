@@ -11,9 +11,8 @@ import java.util.List;
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
-    public Product create(Product product) {
+    public void create(Product product) {
         productData.add(product);
-        return product;
     }
 
     public Iterator<Product> findAll() {
@@ -38,6 +37,17 @@ public class ProductRepository {
         }
         return null;
     }
+
+    public void delete(String id) {
+        for (int i = 0; i < productData.size(); i++) {
+            Product product = productData.get(i);
+            if (product.getProductId().equals(id)) {
+                productData.remove(i);
+                break;
+            }
+        }
+    }
+
 
 }
 
