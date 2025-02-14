@@ -9,10 +9,19 @@
   <input type="hidden" th:field="*{productId}" />
 
   <label for="productName">Product Name:</label>
-  <input type="text" id="productName" th:field="*{productName}" required />
+  <input type="text" id="productName"
+         th:field="*{productName}"
+         required
+         pattern="[A-Za-z\s]+"
+         title="Nama harus berupa huruf dan spasi" />
 
   <label for="productQuantity">Product Quantity:</label>
-  <input type="number" id="productQuantity" th:field="*{productQuantity}" required />
+  <input type="number" id="productQuantity"
+         th:field="*{productQuantity}"
+         required
+         step="1"
+         min="0"
+         title="Quantity harus berupa angka bulat positif" />
 
   <button type="submit">Save</button>
 </form>
