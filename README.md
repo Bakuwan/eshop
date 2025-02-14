@@ -1,3 +1,5 @@
+Reflection 1
+
 Standar kode yang dipelajari di Modul 1 - Coding Standards adalah:
 
 1. Clean Code
@@ -7,10 +9,10 @@ Pastikan setiap variabel, fungsi, dan kelas memiliki nama yang jelas dan deskrip
 
     b. Fungsi Kecil dan Spesifik:
 Buatlah fungsi yang hanya melakukan satu tugas spesifik.
-2. 
+
     c. Perbaiki Kode, Bukan Hanya Menambahkan Komentar:
 Jangan gunakan komentar untuk memperbaiki kode yang buruk.
-2. 
+
     d. Gunakan Abstract Interface:
 Manfaatkan abstract interface untuk menyembunyikan implementasi objek. Hal ini meningkatkan fleksibilitas dan memungkinkan penggantian implementasi tanpa mengubah kode yang menggunakannya.
 
@@ -41,3 +43,12 @@ Manfaatkan abstract interface untuk menyembunyikan implementasi objek. Hal ini m
     f. Input Validation
 
    Data yang masuk ke dalam sistem harus divalidasi agar sesuai dengan tipe, format, dan rentang yang diharapkan untuk mencegah serangan injeksi dan manipulasi data. 
+
+
+
+Reflection 2
+
+1. Menulis unit test adalah langkah penting untuk memastikan bahwa aplikasi kita berfungsi dengan baik. Idealnya sebuah class memiliki unit test yang cukup untuk setiap method dan skenario yang penting.
+   100 % Code coverage tidak berarti bahwa kode kita bebas dari bug, karena mungkin masih ada kasus yang belum dicover atau kesalahan yang tidak terlihat.
+
+2. Jika class Java baru memiliki prosedur setup dan instance variables yang sama, bisa menambah duplikasi yang tidak perlu. Kode yang duplikat bisa membuat kode lebih susah untuk dimaintain. Saran perbaikan saya adalah untuk menghindari duplikasi kode agar kode lebih bersih.
