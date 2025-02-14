@@ -7,6 +7,12 @@ plugins {
 group = "id.ac.ui.cs.advprog"
 version = "0.0.1-SNAPSHOT"
 
+
+val seleniumJavaVersion = "4.14.1"
+val seleniumJupiterVersion = "5.0.1"
+val webdrivermanagerVersion = "5.6.3"
+val junitJupiterVersion = "5.9.1"
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
@@ -33,11 +39,9 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	testImplementation("org.seleniumhq.selenium:selenium-java:$seleniumJavaVersion")
-	testImplementation("io.github.bonigarcia:junit-jupiter:$seleniumJupiterVersion")
+	testImplementation("io.github.bonigarcia:selenium-jupiter:$seleniumJupiterVersion")
 	testImplementation("io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion")
-	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-
+	testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
 
 tasks.register<Test>("unitTest") {
@@ -62,8 +66,3 @@ tasks.register<Test>("functionalTest") {
 tasks.withType<Test>().configureEach() {
 	useJUnitPlatform()
 }
-
-val seleniumJavaVersion = "4.14.1"
-val seleniumJupiterVersion = "5.0.1"
-val webdrivermanagerVersion = "5.6.3"
-val junitJupiterVersion = "5.9.1"
