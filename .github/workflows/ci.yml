@@ -1,0 +1,39 @@
+name: Continuous Integration (CI)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out the Git repository
+        uses: actions/checkout@v4
+      - name: Set up Java toolchain
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+          cache: "gradle"
+      - name: PMD
+        uses: pmd/pmd-github-action@v2
+        id: pmd
+        with:
+          version: '7.10.0'
+          sourcePath: 'src/main/java'
+          rulesets: 'src/main/resources/quickstart.xml'
+          analyzeModifiedFilesOnly: false
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: pmd-report.sarif
+      - name: Add gradlew permission
+        run: chmod +x gradlew
+      - name: Run unit tests
+        run: ./gradlew test
+
+
+
+        
