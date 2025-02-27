@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.Iterator;
 
 @Repository
-public class carRepository {
+public class CarRepository {
     static int id = 0;
     private List<Car> carData = new ArrayList<>();
     public Car create(Car car) {
