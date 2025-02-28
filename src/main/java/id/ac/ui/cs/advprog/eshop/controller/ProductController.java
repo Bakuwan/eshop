@@ -81,8 +81,8 @@ public class ProductController {
             return "redirect:listCar";
         }
 
-        @GetMapping
-        public String listCar(Model model) {
+        @GetMapping("/listCar")
+        public String carListPage(Model model) {
             List<Car> allCars = carService.findAll();
             model.addAttribute("cars", allCars);
             return "carList";
@@ -102,7 +102,7 @@ public class ProductController {
             return "redirect:listCar";
         }
         @PostMapping("/deleteCar")
-        public String deleteCar(@PathVariable("carId") String carId) {
+        public String deleteCar(@RequestParam("carId") String carId) {
             carService.deleteCarById(carId);
             return "redirect:listCar";
         }
