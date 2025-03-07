@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
+import enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,7 +50,7 @@ class PaymentRepositoryTest {
         Payment findResult = paymentRepository.findById(payment.getId());
         assertEquals(payment.getId(), result.getId());
         assertEquals(payment.getId(), findResult.getId());
-        assertEquals("REJECTED", findResult.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), findResult.getStatus());
     }
 
     @Test
@@ -61,13 +62,13 @@ class PaymentRepositoryTest {
                 payment.getId(),
                 payment.getMethod(),
                 payment.getPaymentData(),
-                "SUCCESS"
+                PaymentStatus.SUCCESS.getValue()
         );
         Payment result = paymentRepository.save(newPayment);
         Payment findResult = paymentRepository.findById(payment.getId());
         assertEquals(payment.getId(), result.getId());
         assertEquals(payment.getId(), findResult.getId());
-        assertEquals("SUCCESS", findResult.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), findResult.getStatus());
     }
 
     @Test
@@ -77,7 +78,7 @@ class PaymentRepositoryTest {
         }
         Payment findResult = paymentRepository.findById(payments.get(1).getId());
         assertEquals(payments.get(1).getId(), findResult.getId());
-        assertEquals("SUCCESS", findResult.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), findResult.getStatus());
     }
 
     @Test
