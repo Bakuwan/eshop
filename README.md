@@ -123,3 +123,41 @@ Jika tidak menerapkan OCP, setiap kali saya ingin menambahkan fitur baru saya ha
 
 Jika kode bergantung langsung ke implementasi dan bukan interface, akan terdapat masalah saat saya perlu mengganti implementasi tanpa merubah kode yang lain. Sebagai contoh, jika ProductService langsung bergantung ke ProductRepositoryImpl, saya tidak bisa mengubah kode di ProductRepositoryImpl tanpa ikut mengubah kode memiliki dependency. 
 </details>
+
+<details>
+<summary>
+Reflection Modul 4
+</summary>
+
+## 1. Reflect based on Percival (2017) proposed self-reflective questions
+
+Manfaat TDD yang saya rasakan adalah:
+
+1. Dengan menulis test terlebih dahulu, saya bisa mendesain kode dengan lebih baik karena saya mendesain terlebih dahulu perilaku kode yang diharapkan.
+2. TDD membuat saya harus melakukan refactoring secara berkala, sehingga membantu saya menjaga kualitas kode.
+
+## 2. Reflection of F.I.R.S.T Principle in Tutorial
+
+1. Fast
+
+Tes yang saya buat di tutorial berjalan dengan cepat dengan mengandalkan mockito dan in-memory databse.
+
+2. Independent
+
+Tes yang ada di tutorial sudah lumayan mandiri, akan tetapi masih ada ruang untuk improvement dalam memastikan setiap test berdiri sendiri.
+
+3. Repeatable
+
+Tes yang ada di tutorial dapat dilakukan berulang pada komputer saya. Prinsip Repeatable diperlukan agar kode bisa di tes di semua kondisi lingkungan.
+
+4. Self-Validating
+
+Pada tes di tutorial digunakan assertion untuk memvalidasi hasil tes. Dengan ini saya akan mudah menemukan kesalahan pada kode.
+
+5. Timely
+
+Dengan menerapkan TDD pada pengembangan kode, saya melakukan perbaikan kode tanpa menunggu kode selesai sehingga kode bisa diselesaikan tepat waktu.
+
+
+
+</details>
