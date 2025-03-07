@@ -73,3 +73,53 @@ Ada satu lagi warning yang tidak saya fix yakni `Unused import 'org.springframew
 
 Implementasi workflow saya sudah memenuhi CI/CD. Untuk CI, saya menggunakan github workflow untuk mengautomasi testing setiap kali kode di push ke repository. Untuk CD, saya menggunakan Koyeb yang akan mendeploy aplikasi otomatis setelah kode dipush dan berhasil melewati testing.
 </details>
+
+<details>
+<summary> Reflection Modul 3</summary>
+
+## Explain what principles you apply to your project!
+
+1. Single Responsibility Principle (SRP) 
+
+Single Responsibility Principle menyatakan bahwa setiap kelas atau modul harus memiliki satu alasan untuk berubah, artinya kelas tersebut hanya bertanggung jawab atas satu bagian dari fungsionalitas aplikasi.
+
+Saya mengimplementasikan SRP dengan cara memisahkan kode yang bertanggung jawab ke product dan ke car, seperti memisahkan model, repository, service, dan controller untuk car dan product.
+2. Open Close Principle (OCP)
+
+Open-Closed Principle menyatakan bahwa kelas atau modul harus terbuka untuk ekstensi tetapi tertutup untuk modifikasi, sehingga kita bisa menambah fungsionalitas baru tanpa merubah kode yang ada.
+
+Saya mengimplementasikan OCP dengan cara membuat interface untuk CarRepository dan ProductRepository agar kode bisa di ekstensi tanpa memodifikasi kode yang sudah ada.
+
+3. Dependency Inversion Principle (DIP)
+
+Dependency Inversion Principle (DIP) menyatakan bahwa  modul tingkat tinggi tidak bergantung pada modul tingkat rendah, keduanya harus bergantung pada abstraksi, dan rincian harus bergantung pada abstraksi, bukan sebaliknya.
+
+Saya mengimplementasikan DIP dengan cara mengubah dependansi pada CarServiceImpl dan ProductServiceImpl agar bergantung ke interface CarRepository dan ProductRepository.
+
+## Explain the advantages of applying SOLID principles to your project with examples.
+1. Single Responsibility Principle (SRP)
+
+Dengan mengaplikasikan SRP, kode saya dipastikan hanya bertanggung jawab atas satu hal. Jika dikemudian hari saya ingin membuat perubahan untuk hal spesifik, misalnya perubahan pada logika yang berkaitan dengan produk, saya hanya perlu mengubah kelas yang relevan tanpa mempengaruhi kode lainnya. Sebagai contoh, jika saya ingin mengubah logika penghapusan produk, maka saya hanya perlu mengubah kode di dalam ProductRepositoryImpl.
+
+2. Open Close Principle (OCP)
+
+Dengan mengaplikasikan OCP, kode saya akan lebih mudah untuk diperluas. Misalkan saya ingin menambahkan fitur baru untuk produk, maka saya hanya perlu menambahkan implementasi baru dari interface ProductRepository.
+
+3. Dependency Inversion Principle (DIP)
+
+Dengan mengaplikasikan DIP, jika saya ingin mengganti implementasi repository, saya hanya perlu menambahkan implementasi baru dari interface tanpa harus mengubah kode lama saya, sehingga mempermudah pekerjaan saya. Sebagai contoh, jika saya ingin mengubah implementasi kode di ProductRepository, saya cukup membuat kelas baru yang mengimplementasikan interface ProductRepository, tanpa harus mengubah implementasi kode di ProductService.
+
+## Explain the disadvantages of not applying SOLID principles to your project with examples.
+
+1. Tanpa SRP
+
+Jika kelas memiliki lebih dari satu tanggung jawab, kode akan susah untuk dipahami, diubah, dan diuji. Sebagai contoh, jika saya menggabungkan implementasi ProductService dan CarService dalam satu kelas dengan berbagai tanggung jawab, saat saya ingin menambahkan fitur baru untuk produk, bisa jadi saya ikut merusak logika untuk mobil.
+
+2. Tanpa OCP
+
+Jika tidak menerapkan OCP, setiap kali saya ingin menambahkan fitur baru saya harus mengubah kode saya yang sudah ada, sehingga berisiko merusak fungsionalitas yang telah ada. Sebagai contoh, jika saya langsung memodifikasi ProductRepository, kode yang sudah ada sebelumnya mungkin harus diubah untuk menerima modifikasi baru. 
+
+3. Tanpa DIP
+
+Jika kode bergantung langsung ke implementasi dan bukan interface, akan terdapat masalah saat saya perlu mengganti implementasi tanpa merubah kode yang lain. Sebagai contoh, jika ProductService langsung bergantung ke ProductRepositoryImpl, saya tidak bisa mengubah kode di ProductRepositoryImpl tanpa ikut mengubah kode memiliki dependency. 
+</details>
