@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import enums.PaymentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,14 +25,14 @@ class PaymentTest {
 
     @Test
     void testCreatePaymentDefaultStatus() {
-        Payment payment = new Payment("ef16c464-e644-1234-a49c-7db5d9420ee0 ", "Voucher", voucherCode);
-        assertEquals("SUCCESS", payment.getStatus());
+        Payment payment = new Payment("ef16c464-e644-1234-a49c-7db5d9420ee0", "Voucher", voucherCode);
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
     void testCreatePaymentSuccessStatus() {
-        Payment payment = new Payment("ef16c464-e644-5678-a49c-7db5d9420ee0 ", "BankTransfer", bankTransfer, "SUCCESS");
-        assertEquals("SUCCESS", payment.getStatus());
+        Payment payment = new Payment("ef16c464-e644-5678-a49c-7db5d9420ee0", "BankTransfer", bankTransfer, PaymentStatus.SUCCESS.getValue());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -44,13 +45,13 @@ class PaymentTest {
     @Test
     void testSetStatusToRejected() {
         Map<String, String> invalidBankTransfer = new HashMap<>();
-        Payment payment = new Payment("ef16c464-e644-7654-a49c-7db5d9420ee0 ", "BankTransfer", invalidBankTransfer);
-        assertEquals("REJECTED", payment.getStatus());
+        Payment payment = new Payment("ef16c464-e644-7654-a49c-7db5d9420ee0", "BankTransfer", invalidBankTransfer);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
     void testSetStatusToInvalidStatus() {
-        Payment payment = new Payment("ef16c464-e644-3245-a49c-7db5d9420ee0 ", "Voucher", voucherCode);
+        Payment payment = new Payment("ef16c464-e644-3245-a49c-7db5d9420ee0", "Voucher", voucherCode);
         assertThrows(IllegalArgumentException.class, () -> {
             payment.setStatus("MEOW");
         });
